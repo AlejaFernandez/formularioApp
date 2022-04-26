@@ -4,18 +4,22 @@
 <div class="row">
     <div class="col">
 
-        <form (ngSubmit)="guardar(miFormulario)" #miFormulario="ngForm">
+        <form (ngSubmit)="guardar()" #miFormulario="ngForm">
             <!--  Campo de Producto -->
             <div class="mb-3 row">
                 <label class="col-sm-3 col-form-label">Producto</label>
                 <div class="col-sm-9">
+
                     <input type="text"
                            class="form-control"
-                           ngModel
+                           [ngModel]="initForm.producto"
                            name="producto"
                            placeholder="Nombre del producto"
-                           required>
-                    <span class="form-text text-danger"> Debe ser de 3 letras</span>
+                           required
+                           minlength="3">
+                          
+
+                    <span class="form-text text-danger" *ngIf="nombreValido()"> Debe ser de 3 letras</span>
                 </div>
             </div>
             <!-- Campo de Precio -->
@@ -24,11 +28,14 @@
                 <div class="col-sm-9">
                     <input type="number"
                            class="form-control"
-                           ngModel
+                           [ngModel]="initForm.precio"
                            name="precio"
                            placeholder="Precio del producto"
-                           required>
+                           required
+                           >
+                    <span class="form-text text-danger" *ngIf="precioValido()"> El precio debe ser mayor a 0</span>
                 </div>
+               
             </div>
             <!-- Campo de existencias -->
             <div class="mb-3 row">
@@ -36,8 +43,10 @@
                 <div class="col-sm-9">
                     <input type="text"
                            class="form-control"
-                           ngModel
+                           [ngModel]="initForm.producto"
                            name="existencias"
+                           customMin
+                           [minimo]="0"
                            placeholder="Existencias del producto">
                 </div>
             </div>
@@ -45,6 +54,7 @@
             <div class="row">
                 <div class="col">
                     <button type="submit"
+                    [disabled]="miFormulario.invalid"
                     class="btn btn-primary float-end">
                         Guardar
                     </button>
@@ -59,7 +69,17 @@
     <div class="col">
         <span>Valid</span>
         <pre>{{ miFormulario.valid }}</pre>
+
+        <span>Pristine</span>
+        <pre>{{ miFormulario.pristine }}</pre>
+
+        <span>Toched</span>
+        <pre>{{ miFormulario.touched }}</pre>
+
         <span>Value</span>
         <pre>{{miFormulario.value |  json}}</pre>
+
+        <span>CustomDirective</span>
+        <pre>{{ miFormulario.controls['existencias']?.errors | json}}</pre>
     </div>
 </div>

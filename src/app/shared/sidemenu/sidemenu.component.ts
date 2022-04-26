@@ -9,6 +9,14 @@ interface MenuItem{
   selector: 'app-sidemenu',
   templateUrl: './sidemenu.component.html',
   styles: [
+    `
+      li{
+        cursor: pointer;
+      }
+      li:hover{
+        background-color: lightblue;
+      }
+    `
   ]
 })
 export class SidemenuComponent  {

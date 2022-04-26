@@ -6,18 +6,24 @@ import { TemplateRoutingModule } from './template-routing.module';
 import { BasicosComponent } from './basicos/basicos.component';
 import { SwitchesComponent } from './switches/switches.component';
 import { DinamicosComponent } from './dinamicos/dinamicos.component';
+import { CustomMinDirective } from './directives/cutom-min.directive';
+import { TooltipModule } from '../tooltip/tooltip.module';
+
 
 
 @NgModule({
   declarations: [
     BasicosComponent,
     SwitchesComponent,
-    DinamicosComponent
+    DinamicosComponent,
+
+    CustomMinDirective
   ],
   imports: [
     CommonModule,
     FormsModule,
-    TemplateRoutingModule
+    TemplateRoutingModule,
+    TooltipModule
   ]
 })
 export class TemplateModule { }

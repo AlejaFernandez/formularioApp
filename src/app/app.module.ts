@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 
 import { SharedModule } from './shared/shared.module';
 import { ReactiveModule } from './reactive/reactive.module';
+import { TooltipModule } from './tooltip/tooltip.module';
+
 
 
 
@@ -17,8 +19,12 @@ import { ReactiveModule } from './reactive/reactive.module';
     BrowserModule,
     AppRoutingModule,
     ReactiveModule,
-    SharedModule
+    SharedModule,
+    TooltipModule
     
+  ],
+  exports:[
+    TooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]
